@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>Guitar Hero Clone</title>
+</head>
+<body>
+  <div id="start-screen">
+    <h1>Guitar Hero Clone</h1>
+    <button id="start-game-btn">Start Game</button>
+    <button id="create-room-btn">Criar Sala</button>
+  </div>
+
+  <div id="room-screen" class="hidden">
+    <h1>Sala Criada!</h1>
+    <p>Compartilhe o link abaixo com outro jogador:</p>
+    <p id="room-link"></p>
+    <button id="copy-link-btn">Copiar Link</button>
+    <button id="back-to-menu-btn">Voltar ao Menu</button>
+  </div>
+
+  <div id="game" class="hidden">
+    <div id="score">Score: 0</div>
+    <div id="errors">Erros: 0</div>
+    <div id="countdown-timer" class="countdown-timer"></div> <!-- Elemento adicionado -->
+    <div id="end-game-button">Encerrar</div>
+    <div class="line line-a"></div>
+    <div class="line line-s"></div>
+    <div class="line line-d"></div>
+    <div class="line line-f"></div>
+    <div class="line line-g"></div>
+    <div class="hitbox hitbox-a">A</div>
+    <div class="hitbox hitbox-s">S</div>
+    <div class="hitbox hitbox-d">D</div>
+    <div class="hitbox hitbox-f">F</div>
+    <div class="hitbox hitbox-g">G</div>
+  </div>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
