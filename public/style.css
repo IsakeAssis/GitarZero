@@ -1,0 +1,201 @@
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100dvh;
+  background: #000;
+  color: #fff;
+  margin: 0;
+  font-family: 'Rock Salt', cursive; /* Fonte rock */
+}
+
+
+/* Estilo do vídeo de fundo */
+#background-video {
+  position: absolute; /* Para posicionar o vídeo atrás de outros elementos */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Garante que o vídeo cubra toda a tela */
+  z-index: -1; /* Coloca o vídeo atrás de outros elementos */
+}
+
+
+.hidden {
+  display: none;
+}
+
+#start-screen, #controls-screen, #fail-screen {
+  text-align: center;
+  -webkit-animation: fadeIn 0.273s ease-in-out;
+          animation: fadeIn 0.273s ease-in-out;
+}
+#start-screen h1, #controls-screen h1, #fail-screen h1 {
+  font-size: 3svw;
+  margin-bottom: 2dvh;
+  -webkit-animation: zoomIn 0.273s ease-in-out;
+          animation: zoomIn 0.273s ease-in-out;
+}
+#start-screen p, #controls-screen p, #fail-screen p {
+  font-size: 1.25svw;
+  margin-bottom: 2dvh;
+  -webkit-animation: fadeIn 1.273s ease-in-out;
+          animation: fadeIn 1.273s ease-in-out;
+}
+#start-screen button, #controls-screen button, #fail-screen button {
+  padding: 0.5vw 1vw;
+  font-size: 1.25svw;
+  cursor: pointer;
+  margin-top: 1rem;
+  background: #222;
+  color: #fff;
+  border: 0.2svw solid #fff;
+  transition: background 0.273s ease-in-out;
+}
+#start-screen button:hover, #controls-screen button:hover, #fail-screen button:hover {
+  background: #555555;
+}
+
+#game {
+  position: relative;
+  width: 100svw;
+  height: 100dvh;
+  background: #222;
+  overflow: hidden;
+  border: 2px solid #fff;
+}
+#game #score {
+  position: absolute;
+  top: 1%;
+  left: 1%;
+  font-size: 1.5svw;
+}
+#game .note {
+  position: absolute;
+  width: 15%;
+  height: 3%;
+  border-radius: 1svw;
+}
+#game .note.note-a {
+  background: red;
+}
+#game .note.note-s {
+  background: green;
+}
+#game .note.note-d {
+  background: blue;
+}
+#game .note.note-f {
+  background: yellow;
+}
+#game .note.note-g {
+  background: magenta;
+}
+#game .line {
+  position: absolute;
+  width: 15%;
+  height: 100%;
+  left: 0;
+  border-left: 0.2svw solid #444;
+}
+#game .line:nth-child(2) {
+  left: 20%;
+}
+#game .line:nth-child(3) {
+  left: 40%;
+}
+#game .line:nth-child(4) {
+  left: 60%;
+}
+#game .line:nth-child(5) {
+  left: 80%;
+}
+#game .line.line-a, #game .line.line-s, #game .line.line-d, #game .line.line-f, #game .line.line-g {
+  background: rgba(0, 0, 0, 0.1);
+}
+#game .hitbox {
+  position: absolute;
+  bottom: 0;
+  width: 15%;
+  height: 15%;
+  background: rgba(255, 255, 255, 0.2);
+  text-align: center;
+  line-height: 15dvh;
+  font-size: 1.5svw;
+  font-weight: bold;
+}
+#game .hitbox.hitbox-a {
+  left: 0;
+  background: rgba(255, 0, 0, 0.2);
+}
+#game .hitbox.hitbox-s {
+  left: 20%;
+  background: rgba(0, 128, 0, 0.2);
+}
+#game .hitbox.hitbox-d {
+  left: 40%;
+  background: rgba(0, 0, 255, 0.2);
+}
+#game .hitbox.hitbox-f {
+  left: 60%;
+  background: rgba(255, 255, 0, 0.2);
+}
+#game .hitbox.hitbox-g {
+  left: 80%;
+  background: rgba(255, 0, 255, 0.2);
+}
+#game .hitbox.active {
+  background: rgba(255, 255, 255, 0.5);
+}
+#game #end-game-button {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  padding: 0.5svw 1svw;
+  font-size: 1.5svw;
+  cursor: pointer;
+  background: #222;
+  color: #fff;
+  border: 0.2svw solid #fff;
+  z-index: 10;
+  transition: background 0.273s ease-in-out;
+}
+#game #end-game-button:hover {
+  background: #555555;
+}
+
+@-webkit-keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@-webkit-keyframes zoomIn {
+  from {
+    transform: scale(0.5);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+@keyframes zoomIn {
+  from {
+    transform: scale(0.5);
+  }
+  to {
+    transform: scale(1);
+  }
+}
