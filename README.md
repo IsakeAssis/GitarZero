@@ -1,5 +1,5 @@
-# Gitar Zero 🎸
-Gitar Zero é um jogo inspirado no famoso jogo Guitar Hero. O projeto oferece uma experiência interativa para jogadores, seja competindo em multiplayer ou jogando individualmente. Desenvolvido com Node.js, HTML, CSS e JavaScript, este jogo combina tecnologias modernas para criar uma plataforma divertida e intuitiva.
+# Guitar Zero 🎸
+Guitar Zero é um jogo inspirado no famoso jogo Guitar Hero. O projeto oferece uma experiência interativa para jogadores, seja competindo em multiplayer ou jogando individualmente. Desenvolvido com Node.js, HTML, CSS e JavaScript, este jogo combina tecnologias modernas para criar uma plataforma divertida e intuitiva.
 
 🛠️ Tecnologias Utilizadas
 Node.js: Back-end para lidar com comunicação em tempo real e gerenciamento de salas multiplayer.
@@ -11,7 +11,7 @@ JavaScript: Lógica do jogo, movimentação das notas e interações com o jogad
 
 📂 Estrutura do Projeto
 O projeto é organizado em pastas para facilitar o desenvolvimento e a manutenção:
-Gitar Zero  
+Guitar Zero  
 ├── public/  
 │   ├── index.html       # Página inicial do jogo  
 │   ├── style.css        # Estilo da interface 
@@ -20,59 +20,10 @@ Gitar Zero
 ├── package.json         # Gerenciador de dependências e configurações do projeto  
 
 🖧 Servidor e Funcionalidade Multiplayer
-A funcionalidade multiplayer do Gitar Zero foi projetada utilizando Node.js com o pacote socket.io para comunicação em tempo real entre os jogadores. Abaixo, explicamos como o servidor e o multiplayer funcionam.
+A funcionalidade multiplayer do Guitar Zero foi projetada utilizando Node.js com o pacote socket.io para comunicação em tempo real entre os jogadores. Abaixo, explicamos como o servidor e o multiplayer funcionam.
 
 ⚙️ Configuração do Servidor
 O servidor utiliza o módulo http integrado do Node.js e o socket.io para gerenciar conexões e salas de jogo.
-
-Servidor HTTP
-O servidor foi configurado para servir os arquivos estáticos da pasta public, onde o jogo está localizado. Ele é iniciado na porta 3003 e exibe a URL para acesso:
-const app = express();
-const server = http.createServer(app);
-const io = new Server(server);
-
-app.use(express.static('public'));
-
-server.listen(3003, () => {
-  console.log('Servidor rodando em http://localhost:3003');
-});
-
-Gerenciamento de Salas Multiplayer
-Cada sala é identificada por um ID único gerado pelo pacote uuid. Uma sala pode conter até dois jogadores, sendo que o servidor gerencia as seguintes etapas:
-
-Criar uma sala:
-Um jogador cria uma sala e recebe um link único para convidar o segundo jogador.
-
-socket.on('createRoom', () => {
-  const roomId = uuidv4(); // Gera um ID único
-  rooms[roomId] = { players: [] }; // Registra a sala no servidor
-  socket.join(roomId); // Adiciona o jogador à sala
-  rooms[roomId].players.push(socket.id);
-  socket.emit('roomCreated', roomId); // Envia o ID ao cliente
-});
-
-Entrar em uma sala existente:
-O segundo jogador pode se conectar à sala pelo link fornecido. Quando os dois jogadores estiverem conectados, o jogo começa.
-
-socket.on('joinRoom', (roomId) => {
-  if (rooms[roomId] && rooms[roomId].players.length < 2) {
-    socket.join(roomId);
-    rooms[roomId].players.push(socket.id);
-    io.to(roomId).emit('bothPlayersReady'); // Notifica que os dois estão prontos
-  } else {
-    socket.emit('roomFull'); // Sala cheia
-  }
-});
-
-Gerenciamento de desconexões:
-Se um jogador sair da sala, ele é removido da lista de jogadores, e a sala é apagada se estiver vazia.
-socket.on('disconnect', () => {
-  for (const roomId in rooms) {
-    rooms[roomId].players = rooms[roomId].players.filter(id => id !== socket.id);
-    if (rooms[roomId].players.length === 0) delete rooms[roomId]; // Remove sala vazia
-  }
-});
-
 
 🚀 Como Rodar o Projeto
 1️⃣ Pré-requisitos
@@ -118,6 +69,6 @@ npm install uuid
 🌟 Contribua
 Se você encontrou bugs ou deseja sugerir melhorias, abra uma issue ou envie um pull request. Toda contribuição é bem-vinda!
 
-Divirta-se jogando Gitar Zero! 🎶
+Divirta-se jogando Guitar Zero! 🎶
 
 
