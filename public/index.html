@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Metal+Mania&display=swap" rel="stylesheet">
+  <title>Guitar Hero 🎸</title>
+</head>
+<body>
+  <div id="start-screen">
+    <h1>Guitar Hero 🎸 </h1>
+    <button id="start-game-btn">Start Game</button>
+    <button id="rules-btn" class="rules-button">Regras do Game</button>
+    <div id="rules" class="hidden">
+      <h2>Regras do Jogo</h2>
+      <p>
+        O objetivo do jogo é seguir o ritmo da guitarra e acertar as notas no momento certo.
+        Cada nota acertada concede pontos, mas cuidado: você só pode errar até 10 vezes antes de perder.
+        Boa sorte!
+      </p>
+      <button id="close-rules-btn" class="close-button">Fechar</button>
+    </div>
+    <button id="create-room-btn">Criar Sala</button>
+  </div>
+
+
+  <video id="background-video" autoplay loop muted>
+    <source src="video/backvideo.mp4" type="video/mp4">
+    Seu navegador não suporta o elemento de vídeo.
+  </video>
+
+  <div id="room-screen" class="hidden">
+    <h1>Sala Criada!</h1>
+    <p>Compartilhe o link abaixo com outro jogador:</p>
+    <p id="room-link" class="room-link">[Insira o link da sala aqui]</p>
+    <div class="button-container">
+      <button id="copy-link-btn" class="rules-button">Copiar Link</button>
+      <button id="back-to-menu-btn" class="rules-button">Voltar ao Menu</button>
+    </div>
+  </div>
+  
+
+  <div id="game" class="hidden">
+    <div id="score">Score: 0</div>
+    <div id="errors">Erros: 0</div>
+    <div id="countdown-timer" class="countdown-timer"></div> <!-- Elemento adicionado -->
+    <div id="end-game-button">Encerrar</div>
+    <div class="line line-a"></div>
+    <div class="line line-s"></div>
+    <div class="line line-d"></div>
+    <div class="line line-f"></div>
+    <div class="line line-g"></div>
+    <div class="hitbox hitbox-a">A</div>
+    <div class="hitbox hitbox-s">S</div>
+    <div class="hitbox hitbox-d">D</div>
+    <div class="hitbox hitbox-f">F</div>
+    <div class="hitbox hitbox-g">G</div>
+  </div>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

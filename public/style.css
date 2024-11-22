@@ -1,0 +1,357 @@
+body {
+  font-family: 'Metal Mania', sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  overflow: hidden;
+  height: 100vh;
+  margin: 0;
+  background: linear-gradient(135deg, #000428, #004e92);
+  color: #fff;
+}
+
+.hidden {
+  display: none;
+}
+
+#start-screen, #controls-screen, #fail-screen {
+  text-align: center;
+  -webkit-animation: fadeIn 0.273s ease-in-out;
+          animation: fadeIn 0.273s ease-in-out;
+}
+#start-screen h1, #controls-screen h1, #fail-screen h1 {
+  font-family: 'Metal Mania', sans-serif;
+  font-size: 3rem;
+  margin-bottom: 2dvh;
+  text-shadow: 0 0 10px #ff0000b8, 0 0 20px #ff8800d2, 0 0 30px #ffff00;
+  color: #fff;
+  -webkit-animation: zoomIn 0.273s ease-in-out;
+          animation: zoomIn 0.273s ease-in-out;
+}
+#start-screen p, #controls-screen p, #fail-screen p {
+  font-size: 1.25svw;
+  margin-bottom: 2dvh;
+  -webkit-animation: fadeIn 1.273s ease-in-out;
+          animation: fadeIn 1.273s ease-in-out;
+}
+#start-screen button, #controls-screen button, #fail-screen button {
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 10vh;
+  padding: 10px 25px;
+  margin: 1rem;
+  color: #fff;
+  background: linear-gradient(90deg, #000dffce, #e52e71);
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease-in-out;
+}
+
+#rules {
+  background: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  max-width: 500px;
+  margin: 20px auto;
+  text-align: center;
+  font-size: 1.5rem;
+}
+.close-button {
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 50px;
+  margin-top: 10px;
+}
+
+.rules-button {
+  background: linear-gradient(45deg, #00c6ff, #0072ff);
+  color: white;
+  font-size: 16px;
+  border: none;
+  padding: 10px 20px;
+  margin: 10px;
+  cursor: pointer;
+  border-radius: 5px;
+  text-transform: uppercase;
+  transition: 0.3s;
+}
+
+.rules-button:hover {
+  background: linear-gradient(45deg, #0072ff, #00c6ff);
+  transform: scale(1.05);
+}
+
+.rules-button:active {
+  transform: scale(0.95);
+}
+
+.room-link {
+  font-size: 18px;
+  text-align: center;
+  margin: 10px 0;
+  word-wrap: break-word; /* Garante que links longos fiquem responsivos */
+}
+
+
+
+button {
+  font-family: 'Metal Mania', sans-serif;
+  padding: 1rem 2rem;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  background: linear-gradient(90deg, #ff00cc, #3333ff);
+  box-shadow: 0 0 20px #ff00cc, 0 0 30px #3333ff;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  margin: 1rem 0;
+}
+
+button:hover {
+  transform: scale(1.1); /* Cresce ao passar o mouse */
+  background: linear-gradient(90deg, #3333ff, #ff00cc);
+  box-shadow: 0 0 25px #ff00cc, 0 0 35px #3333ff;
+}
+
+
+#start-screen button:hover, #controls-screen button:hover, #fail-screen button:hover {
+  background: #348775d4;
+}
+
+#game {
+  position: relative;
+  width: 100svw;
+  height: 100dvh;
+  background: #222;
+  overflow: hidden;
+  border: 2px solid #fff;
+  animation: zoomIn 1s ease-in-out forwards;
+}
+
+#score, #errors {
+  font-size: 2rem;
+  color: #fff;
+  position: center;
+  top: 10px;
+  z-index: 1;
+}
+
+#score {
+  left: 20px;
+}
+
+#errors {
+  right: 20px;
+}
+
+
+#game #score {
+  position: absolute;
+  top: 1%;
+  left: 1%;
+  font-size: 1.5svw;
+}
+#game .note {
+  position: absolute;
+  width: 15%;
+  height: 3%;
+  border-radius: 1svw;
+}
+
+.note {
+  position: absolute;
+  width: 12%;
+  height: 3%;
+  border-radius: 50%;
+  animation: fall 2s linear infinite;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.8), 0 0 20px rgba(255, 255, 255, 0.4);
+}
+
+.note.note-a { background: #ff0000; }
+.note.note-s { background: #00ff00; }
+.note.note-d { background: #0000ff; }
+.note.note-f { background: #ffff00; }
+.note.note-g { background: #ff00ff; }
+
+/*Animação para as notas caírem */
+@keyframes fall {
+  from {
+    top: -10%;
+  }
+  to {
+    top: 100%;
+  }
+}
+
+.hitbox {
+  position: absolute;
+  bottom: 0;
+  width: 15%;
+  height: 55%;
+  border-radius: 10%;
+  text-align: center;
+  line-height: 15vh;
+  font-size: 2rem;
+  font-weight: bold;
+  color: white;
+  background: rgba(255, 255, 255, 0.2);
+  transition: transform 0.3s ease;
+}
+
+.hitbox.hitbox-a { left: 0; background: rgba(255, 0, 0, 0.5); }
+.hitbox.hitbox-s { left: 20%; background: rgba(0, 255, 0, 0.5); }
+.hitbox.hitbox-d { left: 40%; background: rgba(0, 0, 255, 0.5); }
+.hitbox.hitbox-f { left: 60%; background: rgba(255, 255, 0, 0.5); }
+.hitbox.hitbox-g { left: 80%; background: rgba(255, 0, 255, 0.5); }
+
+.hitbox.active {
+  transform: scale(1.2); /* Aumenta de tamanho quando ativa */
+  background: rgba(255, 255, 255, 0.8);
+}
+
+#game .note.note-a {
+  background: red;
+}
+#game .note.note-s {
+  background: green;
+}
+#game .note.note-d {
+  background: blue;
+}
+#game .note.note-f {
+  background: yellow;
+}
+#game .note.note-g {
+  background: magenta;
+}
+#game .line {
+  position: absolute;
+  width: 15%;
+  height: 100%;
+  left: 0;
+  border-left: 0.2svw solid #444;
+}
+/* conserto das colunas das notas 2;5 3;6 4;7 5;8  pedro*/
+#game .line:nth-child(5) {
+  left: 20%;
+}
+#game .line:nth-child(6) {
+  left: 40%;
+}
+#game .line:nth-child(7) {
+  left: 60%;
+}
+#game .line:nth-child(8) {
+  left: 80%;
+}
+#game .line.line-a, #game .line.line-s, #game .line.line-d, #game .line.line-f, #game .line.line-g {
+  background: rgba(0, 0, 0, 0.1);
+}
+#game .hitbox {
+  position: absolute;
+  bottom: 0;
+  width: 15%;
+  height: 15%;
+  background: rgba(255, 255, 255, 0.2);
+  text-align: center;
+  line-height: 15dvh;
+  font-size: 1.5svw;
+  font-weight: bold;
+}
+#game .hitbox.hitbox-a {
+  left: 0;
+  background: rgba(255, 0, 0, 0.547);
+}
+#game .hitbox.hitbox-s {
+  left: 20%;
+  background: rgba(0, 128, 0, 0.666);
+}
+#game .hitbox.hitbox-d {
+  left: 40%;
+  background: rgba(0, 0, 255, 0.799);
+}
+#game .hitbox.hitbox-f {
+  left: 60%;
+  background: rgba(255, 255, 0, 0.589);
+}
+#game .hitbox.hitbox-g {
+  left: 80%;
+  background: rgba(255, 0, 255, 0.578);
+}
+#game .hitbox.active {
+  background: rgba(255, 255, 255, 0.5);
+}
+#game #end-game-button {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  padding: 0.5svw 1svw;
+  font-size: 1.5svw;
+  cursor: pointer;
+  background: #222;
+  color: #fff;
+  border: 0.2svw solid #fff;
+  z-index: 10;
+  transition: background 0.273s ease-in-out;
+}
+#game #end-game-button:hover {
+  background: #555555;
+}
+
+@-webkit-keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@-webkit-keyframes zoomIn {
+  from {
+    transform: scale(0.5);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+@keyframes zoomIn {
+  from {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+#background-video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1; /* Para ficar atrás do conteúdo */
+  pointer-events: none; /* Evita cliques no vídeo */
+}
+/* #background-video {
+  filter: brightness(70%) contrast(110%) saturate(150%);
+  opacity: 0.8;
+} */
