@@ -16,6 +16,7 @@ const copyLinkBtn = document.getElementById('copy-link-btn');
 const backToMenuBtn = document.getElementById('back-to-menu-btn');
 const countdownTimer = document.getElementById('countdown-timer');
 
+<<<<<<< HEAD
 const rulesBtn = document.getElementById('rules-btn');
 const rulesDiv = document.getElementById('rules');
 const closeRulesBtn = document.getElementById('close-rules-btn');
@@ -28,6 +29,8 @@ closeRulesBtn.addEventListener('click', () => {
   rulesDiv.classList.add('hidden');
 });
 
+=======
+>>>>>>> ab92cc14fefc8d5569d570f6cf6f978c3fe3dc8f
 // Função para alternar telas
 function showScreen(screen) {
   startScreen.classList.add('hidden');
@@ -214,4 +217,8 @@ class Game {
 // Iniciar o jogo ao carregar a página
 document.addEventListener('DOMContentLoaded', () => {
   console.log("Jogo carregado. Aguardando início...");
+<<<<<<< HEAD
 });
+=======
+});
+>>>>>>> ab92cc14fefc8d5569d570f6cf6f978c3fe3dc8f
