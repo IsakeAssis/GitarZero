@@ -16,7 +16,6 @@ const copyLinkBtn = document.getElementById('copy-link-btn');
 const backToMenuBtn = document.getElementById('back-to-menu-btn');
 const countdownTimer = document.getElementById('countdown-timer');
 
-<<<<<<< HEAD
 const rulesBtn = document.getElementById('rules-btn');
 const rulesDiv = document.getElementById('rules');
 const closeRulesBtn = document.getElementById('close-rules-btn');
@@ -29,8 +28,6 @@ closeRulesBtn.addEventListener('click', () => {
   rulesDiv.classList.add('hidden');
 });
 
-=======
->>>>>>> ab92cc14fefc8d5569d570f6cf6f978c3fe3dc8f
 // Função para alternar telas
 function showScreen(screen) {
   startScreen.classList.add('hidden');
@@ -158,6 +155,53 @@ class Game {
     document.addEventListener('keydown', (e) => this.handleKeyPress(e.key));
   }
 
+
+  // resgistro e contagem das notas[p]
+  start() {
+    this.startTime = Date.now();
+    this.spawnNotes(); 
+    this.updateTime();  
+  }
+  updateTime() {
+    if (this.isPaused) return;
+
+    const currentTime = Date.now();
+    this.elapsedTime = (currentTime - this.startTime) / 1000;
+    requestAnimationFrame(() => this.updateTime()); 
+  }
+
+  spawnNotes() {
+    if (this.isPaused) return;
+
+    let notesSpawned = 0
+
+    const spawnSingleNote = () => {
+      if (notesSpawned < this.notesPerSpawn) {
+          const line = Math.floor(Math.random() * 5);
+          this.notes.push(new Note(line, this.noteSpeed));
+
+          notesSpawned++;
+          setTimeout(spawnSingleNote, 80000); // Espaçamento entre as notas[p]
+      }
+  };
+  spawnSingleNote();
+
+    // Ajusta a dificuldade com base no score[p]
+    if (this.score > 50) {
+        this.notesPerSpawn = 2; 
+    }
+    if (this.score > 70) {
+        this.notesPerSpawn = 3;
+    }
+    // diminui a daficuldade caso o score abeixe[p]
+    if (this.score < 50) {
+      this.notesPerSpawn = 1;
+    }
+    // Calcula o próximo intervalo de spawn[p]
+    const nextSpawnTime = Math.max(800, 2000 - this.score * 10);
+    this.spawnTimeoutId = setTimeout(() => this.spawnNotes(), nextSpawnTime);
+    }
+
   startGame() {
     this.isPaused = false;
     this.spawnNotes();
@@ -191,14 +235,6 @@ class Game {
     }
   }
 
-  spawnNotes() {
-    if (this.isPaused) return;
-
-    const line = Math.floor(Math.random() * 5);
-    this.notes.push(new Note(line, this.noteSpeed));
-    this.spawnTimeoutId = setTimeout(() => this.spawnNotes(), 2000);
-  }
-
   gameLoop() {
     if (this.isPaused) return;
 
@@ -217,8 +253,4 @@ class Game {
 // Iniciar o jogo ao carregar a página
 document.addEventListener('DOMContentLoaded', () => {
   console.log("Jogo carregado. Aguardando início...");
-<<<<<<< HEAD
 });
-=======
-});
->>>>>>> ab92cc14fefc8d5569d570f6cf6f978c3fe3dc8f

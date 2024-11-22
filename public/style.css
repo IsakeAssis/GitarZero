@@ -1,13 +1,9 @@
 body {
-<<<<<<< HEAD
   font-family: 'Metal Mania', sans-serif;
-=======
->>>>>>> ab92cc14fefc8d5569d570f6cf6f978c3fe3dc8f
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-<<<<<<< HEAD
   text-align: center;
   overflow: hidden;
   height: 100vh;
@@ -16,28 +12,6 @@ body {
   color: #fff;
 }
 
-=======
-  height: 100dvh;
-  background: #000;
-  color: #fff;
-  margin: 0;
-  font-family: 'Rock Salt', cursive; /* Fonte rock */
-}
-
-
-/* Estilo do vídeo de fundo */
-#background-video {
-  position: absolute; /* Para posicionar o vídeo atrás de outros elementos */
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover; /* Garante que o vídeo cubra toda a tela */
-  z-index: -1; /* Coloca o vídeo atrás de outros elementos */
-}
-
-
->>>>>>> ab92cc14fefc8d5569d570f6cf6f978c3fe3dc8f
 .hidden {
   display: none;
 }
@@ -48,16 +22,11 @@ body {
           animation: fadeIn 0.273s ease-in-out;
 }
 #start-screen h1, #controls-screen h1, #fail-screen h1 {
-<<<<<<< HEAD
   font-family: 'Metal Mania', sans-serif;
   font-size: 3rem;
   margin-bottom: 2dvh;
   text-shadow: 0 0 10px #ff0000b8, 0 0 20px #ff8800d2, 0 0 30px #ffff00;
   color: #fff;
-=======
-  font-size: 3svw;
-  margin-bottom: 2dvh;
->>>>>>> ab92cc14fefc8d5569d570f6cf6f978c3fe3dc8f
   -webkit-animation: zoomIn 0.273s ease-in-out;
           animation: zoomIn 0.273s ease-in-out;
 }
@@ -68,7 +37,6 @@ body {
           animation: fadeIn 1.273s ease-in-out;
 }
 #start-screen button, #controls-screen button, #fail-screen button {
-<<<<<<< HEAD
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -156,19 +124,6 @@ button:hover {
 
 #start-screen button:hover, #controls-screen button:hover, #fail-screen button:hover {
   background: #348775d4;
-=======
-  padding: 0.5vw 1vw;
-  font-size: 1.25svw;
-  cursor: pointer;
-  margin-top: 1rem;
-  background: #222;
-  color: #fff;
-  border: 0.2svw solid #fff;
-  transition: background 0.273s ease-in-out;
-}
-#start-screen button:hover, #controls-screen button:hover, #fail-screen button:hover {
-  background: #555555;
->>>>>>> ab92cc14fefc8d5569d570f6cf6f978c3fe3dc8f
 }
 
 #game {
@@ -178,7 +133,6 @@ button:hover {
   background: #222;
   overflow: hidden;
   border: 2px solid #fff;
-<<<<<<< HEAD
   animation: zoomIn 1s ease-in-out forwards;
 }
 
@@ -199,9 +153,6 @@ button:hover {
 }
 
 
-=======
-}
->>>>>>> ab92cc14fefc8d5569d570f6cf6f978c3fe3dc8f
 #game #score {
   position: absolute;
   top: 1%;
@@ -214,7 +165,6 @@ button:hover {
   height: 3%;
   border-radius: 1svw;
 }
-<<<<<<< HEAD
 
 .note {
   position: absolute;
@@ -267,8 +217,6 @@ button:hover {
   background: rgba(255, 255, 255, 0.8);
 }
 
-=======
->>>>>>> ab92cc14fefc8d5569d570f6cf6f978c3fe3dc8f
 #game .note.note-a {
   background: red;
 }
@@ -291,7 +239,6 @@ button:hover {
   left: 0;
   border-left: 0.2svw solid #444;
 }
-<<<<<<< HEAD
 /* conserto das colunas das notas 2;5 3;6 4;7 5;8  pedro*/
 #game .line:nth-child(5) {
   left: 20%;
@@ -303,18 +250,6 @@ button:hover {
   left: 60%;
 }
 #game .line:nth-child(8) {
-=======
-#game .line:nth-child(2) {
-  left: 20%;
-}
-#game .line:nth-child(3) {
-  left: 40%;
-}
-#game .line:nth-child(4) {
-  left: 60%;
-}
-#game .line:nth-child(5) {
->>>>>>> ab92cc14fefc8d5569d570f6cf6f978c3fe3dc8f
   left: 80%;
 }
 #game .line.line-a, #game .line.line-s, #game .line.line-d, #game .line.line-f, #game .line.line-g {
@@ -333,7 +268,6 @@ button:hover {
 }
 #game .hitbox.hitbox-a {
   left: 0;
-<<<<<<< HEAD
   background: rgba(255, 0, 0, 0.547);
 }
 #game .hitbox.hitbox-s {
@@ -351,25 +285,6 @@ button:hover {
 #game .hitbox.hitbox-g {
   left: 80%;
   background: rgba(255, 0, 255, 0.578);
-=======
-  background: rgba(255, 0, 0, 0.2);
-}
-#game .hitbox.hitbox-s {
-  left: 20%;
-  background: rgba(0, 128, 0, 0.2);
-}
-#game .hitbox.hitbox-d {
-  left: 40%;
-  background: rgba(0, 0, 255, 0.2);
-}
-#game .hitbox.hitbox-f {
-  left: 60%;
-  background: rgba(255, 255, 0, 0.2);
-}
-#game .hitbox.hitbox-g {
-  left: 80%;
-  background: rgba(255, 0, 255, 0.2);
->>>>>>> ab92cc14fefc8d5569d570f6cf6f978c3fe3dc8f
 }
 #game .hitbox.active {
   background: rgba(255, 255, 255, 0.5);
@@ -418,7 +333,6 @@ button:hover {
 }
 @keyframes zoomIn {
   from {
-<<<<<<< HEAD
     transform: scale(0.8);
     opacity: 0;
   }
@@ -441,11 +355,3 @@ button:hover {
   filter: brightness(70%) contrast(110%) saturate(150%);
   opacity: 0.8;
 } */
-=======
-    transform: scale(0.5);
-  }
-  to {
-    transform: scale(1);
-  }
-}
->>>>>>> ab92cc14fefc8d5569d570f6cf6f978c3fe3dc8f
