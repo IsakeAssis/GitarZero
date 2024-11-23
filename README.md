@@ -88,7 +88,7 @@ npm install
 3️⃣ Inicie o Servidor
 Para iniciar o servidor e rodar o jogo, execute:
 node server.js
-O servidor estará disponível em: http://localhost:3003.
+O servidor estará disponível em: http://localhost:3000.
 
 4️⃣ Acesse o Jogo
 Abra seu navegador e acesse o endereço fornecido acima.
