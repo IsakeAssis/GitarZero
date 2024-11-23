@@ -1,11 +1,8 @@
 const socket = io(); // Conexão com o servidor
 let roomId = null;
-let isHost = false;
-let errorsPlayer1 = 0;
-let errorsPlayer2 = 0;
 let gameStarted = false;
-let gameInstance = null; // Instância global do jogo
 
+// Elementos da interface
 const startScreen = document.getElementById('start-screen');
 const roomScreen = document.getElementById('room-screen');
 const gameScreen = document.getElementById('game');
@@ -15,40 +12,25 @@ const roomLink = document.getElementById('room-link');
 const copyLinkBtn = document.getElementById('copy-link-btn');
 const backToMenuBtn = document.getElementById('back-to-menu-btn');
 const countdownTimer = document.getElementById('countdown-timer');
-
 const rulesBtn = document.getElementById('rules-btn');
 const rulesDiv = document.getElementById('rules');
 const closeRulesBtn = document.getElementById('close-rules-btn');
 
-rulesBtn.addEventListener('click', () => {
-  rulesDiv.classList.remove('hidden');
-});
-
-closeRulesBtn.addEventListener('click', () => {
-  rulesDiv.classList.add('hidden');
-});
-
-// Função para alternar telas
+// Função para alternar entre telas
 function showScreen(screen) {
-  startScreen.classList.add('hidden');
-  roomScreen.classList.add('hidden');
-  gameScreen.classList.add('hidden');
+  [startScreen, roomScreen, gameScreen].forEach((s) => s.classList.add('hidden'));
   screen.classList.remove('hidden');
 }
 
-// Eventos do menu inicial
-startGameBtn.addEventListener('click', () => {
-  showScreen(gameScreen);
-  initiateCountdownAndStartGame();
-});
-
+// Criar sala
 createRoomBtn.addEventListener('click', () => {
-  socket.emit('createRoom');
+  socket.emit('criar_sala');
 });
 
-socket.on('roomCreated', (id) => {
-  roomId = id;
-  roomLink.textContent = `${window.location.origin}?roomId=${id}`;
+// Resposta do servidor ao criar a sala
+socket.on('sala_criada', (link) => {
+  roomLink.textContent = link;
+  roomId = link.split('/').pop();
   showScreen(roomScreen);
 });
 
@@ -58,18 +40,39 @@ copyLinkBtn.addEventListener('click', () => {
   alert('Link copiado!');
 });
 
+// Voltar ao menu
 backToMenuBtn.addEventListener('click', () => {
   showScreen(startScreen);
 });
 
-// Entrar na sala se houver roomId na URL
+// Mostrar regras
+rulesBtn.addEventListener('click', () => {
+  rulesDiv.classList.remove('hidden');
+});
+
+// Fechar regras
+closeRulesBtn.addEventListener('click', () => {
+  rulesDiv.classList.add('hidden');
+});
+
+// Verificar se o jogador entrou com um link de sala
 const urlParams = new URLSearchParams(window.location.search);
 const joinRoomId = urlParams.get('roomId');
 if (joinRoomId) {
-  socket.emit('joinRoom', joinRoomId);
+  roomId = joinRoomId;
+  socket.emit('entrar_sala', roomId);
 }
 
-socket.on('bothPlayersReady', () => {
+// Jogador 2 entrou na sala
+socket.on('playerJoined', () => {
+  console.log(`Jogador 2 entrou na sala ${roomId}`);
+  if (!gameStarted) {
+    socket.emit('iniciar_jogo', roomId);
+  }
+});
+
+// Iniciar o jogo para ambos os jogadores
+socket.on('comecar_jogo', () => {
   if (!gameStarted) {
     showScreen(gameScreen);
     initiateCountdownAndStartGame();
@@ -77,16 +80,11 @@ socket.on('bothPlayersReady', () => {
   }
 });
 
-// Iniciar contagem regressiva e começar o jogo
+// Função para iniciar a contagem regressiva
 function initiateCountdownAndStartGame() {
   let countdown = 5;
-
-  if (!countdownTimer) {
-    console.error("O elemento 'countdown-timer' está ausente no DOM.");
-    return;
-  }
-
   countdownTimer.innerText = countdown;
+
   const interval = setInterval(() => {
     countdown -= 1;
     countdownTimer.innerText = countdown;
@@ -94,16 +92,16 @@ function initiateCountdownAndStartGame() {
     if (countdown <= 0) {
       clearInterval(interval);
       countdownTimer.innerText = ""; // Limpar o contador após terminar
-
-      // Certifique-se de que o jogo foi inicializado
-      if (!gameInstance) {
-        gameInstance = new Game();
-      }
-
-      // Iniciar o jogo
-      gameInstance.startGame();
+      startGame();
     }
   }, 1000);
+}
+
+// Iniciar o jogo
+function startGame() {
+  console.log('Jogo iniciado! Implementar lógica do jogo aqui.');
+  const gameInstance = new Game();
+  gameInstance.startGame();
 }
 
 // Classe de Nota
@@ -112,8 +110,7 @@ class Note {
     this.line = line;
     this.speed = speed;
     this.element = document.createElement('div');
-    this.element.classList.add('note');
-    this.element.classList.add(`note-${this.getLineChar(line)}`);
+    this.element.classList.add('note', `note-${this.getLineChar(line)}`);
     this.element.style.top = '-3%';
     this.element.style.left = `${line * 20}%`;
     document.getElementById('game').appendChild(this.element);
@@ -211,7 +208,7 @@ class Game {
   }
 }
 
-// Iniciar o jogo ao carregar a página
+// Inicializar quando a página carregar
 document.addEventListener('DOMContentLoaded', () => {
   console.log("Jogo carregado. Aguardando início...");
 });
