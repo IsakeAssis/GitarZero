@@ -138,3 +138,11 @@ Agora você pode testar o jogo em tempo real em qualquer lugar, sem precisar de 
 Se você encontrou bugs ou deseja sugerir melhorias, abra uma issue ou envie um pull request. Toda contribuição é bem-vinda!
 
 Divirta-se jogando Gitar Zero! 🎶
+
+Nomes                                   RGM
+Alexandre Teles Barbosa                 30296781
+Isake Assis Abreu Molina                30260671
+Diogo Santiago Coutinho                 35983451
+Pedro Castro Barros                     29546923
+Matheus Rodrigues de Farias             30566452
+Gustavo Gomes da Nobrega                30587620
