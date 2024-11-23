@@ -113,6 +113,25 @@ Interface Simples e Intuitiva: Design inspirado em Guitar Hero, com comandos dir
 Este projeto utiliza o pacote UUID para geração de identificadores únicos de sala. Caso precise instalá-lo manualmente, execute:
 npm install uuid
 
+🛠️ Usando o ngrok para Testes Remotos
+O ngrok é uma ferramenta que cria um túnel seguro para expor servidores locais à internet, permitindo que você acesse seu servidor de desenvolvimento (como o localhost) em qualquer lugar. Isso é útil para testar o jogo multiplayer em diferentes dispositivos ou para mostrar o projeto para outras pessoas, sem precisar de um servidor de produção.
+
+Como usar o ngrok:
+Instale o ngrok:
+Acesse o site oficial do ngrok e baixe a versão apropriada para o seu sistema operacional. Após o download, extraia o arquivo e mova o executável para um diretório de sua escolha.
+
+Inicie o ngrok:
+Abra um terminal e execute o seguinte comando para expor o servidor local:
+
+bash
+Copiar código
+ngrok http 3003
+Isso criará um túnel que expõe sua aplicação local na URL gerada pelo ngrok, como https://1234abcd.ngrok.io. Essa URL pode ser compartilhada com outras pessoas para jogar o Gitar Zero remotamente.
+
+Teste o Jogo:
+Após iniciar o ngrok, use a URL gerada para acessar o jogo em diferentes dispositivos ou compartilhe com seu amigo para jogarem juntos.
+
+Agora você pode testar o jogo em tempo real em qualquer lugar, sem precisar de um servidor online!
 
 
 🌟 Contribua
@@ -120,4 +139,11 @@ Se você encontrou bugs ou deseja sugerir melhorias, abra uma issue ou envie um 
 
 Divirta-se jogando Gitar Zero! 🎶
 
-
+Nomes                                   RGM
+Alexandre Teles Barbosa                 30296781
+Isake Assis Abreu Molina                30260671
+Diogo Santiago Coutinho                 35983451
+Pedro Castro Barros                     29546923
+Matheus Rodrigues de Farias             30566452
+Gustavo Gomes da Nobrega                30587620
+Gabriel Oliveira dos Santos             30592682

@@ -1,53 +1,61 @@
 const express = require('express');
 const http = require('http');
 const { Server } = require('socket.io');
-const { v4: uuidv4 } = require('uuid');
+const path = require('path');
 
 const app = express();
 const server = http.createServer(app);
 const io = new Server(server);
 
-app.use(express.static('public'));
+const PORT = 3000;
 
-const rooms = {};
+// Servir arquivos estáticos
+app.use(express.static(path.join(__dirname, 'public')));
+
+// Página inicial
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'index.html'));
+});
+
+// Configuração do WebSocket
+const salas = {};
 
 io.on('connection', (socket) => {
-  console.log('Novo jogador conectado:', socket.id);
+  console.log('Um usuário se conectou.');
 
   // Criar sala
-  socket.on('createRoom', () => {
-    const roomId = uuidv4();
-    rooms[roomId] = { players: [] };
+  socket.on('criar_sala', () => {
+    const roomId = Math.random().toString(36).substring(2, 9);
+    salas[roomId] = [socket.id];
     socket.join(roomId);
-    rooms[roomId].players.push(socket.id);
-    socket.emit('roomCreated', roomId);
+    socket.emit('sala_criada', `https://7625-170-233-245-105.ngrok-free.app/?roomId=${roomId}`);
+    console.log(`Sala criada: ${roomId}`);
   });
 
-  // Entrar na sala
-  socket.on('joinRoom', (roomId) => {
-    if (rooms[roomId] && rooms[roomId].players.length < 2) {
+  // Entrar em uma sala
+  socket.on('entrar_sala', (roomId) => {
+    if (salas[roomId] && salas[roomId].length === 1) {
+      salas[roomId].push(socket.id);
       socket.join(roomId);
-      rooms[roomId].players.push(socket.id);
-      io.to(roomId).emit('bothPlayersReady');
+      io.to(roomId).emit('playerJoined'); // Notificar ambos os jogadores
+      console.log(`Jogador entrou na sala: ${roomId}`);
     } else {
-      socket.emit('roomFull');
+      socket.emit('erro', 'Sala cheia ou inexistente.');
     }
   });
 
-  // Sincronizar notas acertadas
-  socket.on('noteHit', (data) => {
-    socket.broadcast.to(data.roomId).emit('noteHit', data);
+  // Iniciar jogo
+  socket.on('iniciar_jogo', (roomId) => {
+    io.to(roomId).emit('comecar_jogo');
+    console.log(`Jogo iniciado na sala: ${roomId}`);
   });
 
-  // Gerenciar desconexões
   socket.on('disconnect', () => {
-    for (const roomId in rooms) {
-      rooms[roomId].players = rooms[roomId].players.filter(id => id !== socket.id);
-      if (rooms[roomId].players.length === 0) delete rooms[roomId];
-    }
+    console.log('Um usuário desconectou.');
   });
 });
 
-server.listen(3003, () => {
-  console.log('Servidor rodando em http://localhost:3003');
+// Iniciar o servidor
+server.listen(PORT, () => {
+  console.log(`Servidor rodando na porta ${PORT}. Acesse http://localhost:${PORT}`);
 });
