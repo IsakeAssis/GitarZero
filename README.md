@@ -146,3 +146,4 @@ Diogo Santiago Coutinho                 35983451
 Pedro Castro Barros                     29546923
 Matheus Rodrigues de Farias             30566452
 Gustavo Gomes da Nobrega                30587620
+Gabriel Oliveira dos Santos             30592682
