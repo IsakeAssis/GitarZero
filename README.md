@@ -1,5 +1,5 @@
 # Guitar Zero 🎸
-Gitar Zero é um jogo inspirado no famoso jogo Guitar Hero. O projeto oferece uma experiência interativa para jogadores, seja competindo em multiplayer ou jogando individualmente. Desenvolvido com Node.js, HTML, CSS e JavaScript, este jogo combina tecnologias modernas para criar uma plataforma divertida e intuitiva.
+Guitar Zero é um jogo inspirado no famoso jogo Guitar Hero. O projeto oferece uma experiência interativa para jogadores, seja competindo em multiplayer ou jogando individualmente. Desenvolvido com Node.js, HTML, CSS e JavaScript, este jogo combina tecnologias modernas para criar uma plataforma divertida e intuitiva.
 
 🛠️ Tecnologias Utilizadas
 Node.js: Back-end para lidar com comunicação em tempo real e gerenciamento de salas multiplayer.
@@ -11,7 +11,7 @@ JavaScript: Lógica do jogo, movimentação das notas e interações com o jogad
 
 📂 Estrutura do Projeto
 O projeto é organizado em pastas para facilitar o desenvolvimento e a manutenção:
-Gitar Zero  
+Guitar Zero  
 ├── public/  
 │   ├── index.html       # Página inicial do jogo  
 │   ├── style.css        # Estilo da interface 
@@ -20,7 +20,7 @@ Gitar Zero
 ├── package.json         # Gerenciador de dependências e configurações do projeto  
 
 🖧 Servidor e Funcionalidade Multiplayer
-A funcionalidade multiplayer do Gitar Zero foi projetada utilizando Node.js com o pacote socket.io para comunicação em tempo real entre os jogadores. Abaixo, explicamos como o servidor e o multiplayer funcionam.
+A funcionalidade multiplayer do Guitar Zero foi projetada utilizando Node.js com o pacote socket.io para comunicação em tempo real entre os jogadores. Abaixo, explicamos como o servidor e o multiplayer funcionam.
 
 ⚙️ Configuração do Servidor
 O servidor utiliza o módulo http integrado do Node.js e o socket.io para gerenciar conexões e salas de jogo.
@@ -126,7 +126,7 @@ Abra um terminal e execute o seguinte comando para expor o servidor local:
 bash
 Copiar código
 ngrok http 3003
-Isso criará um túnel que expõe sua aplicação local na URL gerada pelo ngrok, como https://1234abcd.ngrok.io. Essa URL pode ser compartilhada com outras pessoas para jogar o Gitar Zero remotamente.
+Isso criará um túnel que expõe sua aplicação local na URL gerada pelo ngrok, como https://1234abcd.ngrok.io. Essa URL pode ser compartilhada com outras pessoas para jogar o Guitar Zero remotamente.
 
 Teste o Jogo:
 Após iniciar o ngrok, use a URL gerada para acessar o jogo em diferentes dispositivos ou compartilhe com seu amigo para jogarem juntos.
@@ -137,7 +137,7 @@ Agora você pode testar o jogo em tempo real em qualquer lugar, sem precisar de 
 🌟 Contribua
 Se você encontrou bugs ou deseja sugerir melhorias, abra uma issue ou envie um pull request. Toda contribuição é bem-vinda!
 
-Divirta-se jogando Gitar Zero! 🎶
+Divirta-se jogando Guitar Zero! 🎶
 
 Nomes                                   RGM
 Alexandre Teles Barbosa                 30296781
