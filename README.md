@@ -1,4 +1,4 @@
-# Gitar Zero 🎸
+# Guitar Zero 🎸
 Gitar Zero é um jogo inspirado no famoso jogo Guitar Hero. O projeto oferece uma experiência interativa para jogadores, seja competindo em multiplayer ou jogando individualmente. Desenvolvido com Node.js, HTML, CSS e JavaScript, este jogo combina tecnologias modernas para criar uma plataforma divertida e intuitiva.
 
 🛠️ Tecnologias Utilizadas
