@@ -139,6 +139,68 @@ Se você encontrou bugs ou deseja sugerir melhorias, abra uma issue ou envie um 
 
 Divirta-se jogando Guitar Zero! 🎶
 
+🌟 Checklist do Desenvolvimento do Jogo
+1. Definição do Tema
+Escolha do Tema: Um jogo rítmico inspirado no Guitar Hero, com notas caindo em linhas específicas que o jogador deve acertar.
+Descrição do Tema: O jogo desafia os reflexos do jogador, exigindo que pressione as teclas correspondentes às notas que aparecem na tela no momento certo. Inclui modos multiplayer e single-player para aumentar a experiência.
+
+2. Planejamento
+Identificação dos Recursos Necessários:
+Ferramentas: HTML, CSS, JavaScript, Node.js, Socket.io.
+Hospedagem: Ambiente para servidor multiplayer, front-end e ngrok.
+Elementos visuais: Notas, fundo, e telas (inicias, jogo, fim).
+Sons: Feedback sonoro ao acertar notas e música de fundo.
+Criação do Plano de Desenvolvimento:
+Etapa 1: Definir tarefas dos membros do grupo
+Etapa 2: Desenvolvimento da mecânica básica do jogo.
+Etapa 3: Desenvolvimento do modo multiplayer.
+Etapa 4: Ajuste da dificuldade (velocidade das notas, intervalo).
+Etapa 5: Aperfeiçoamento da mecânica do jogo (modo solo e multiplayer).
+Etapa 6: Desenvolver o visual do game.
+Etapa 7: Desenvolver telas de início e fim do jogo.
+
+3. Desenvolvimento
+Interface do Usuário (UI):
+Tela inicial com botões de jogar sozinho, criar sala, entrar em sala, e visualizar regras.
+Tela de jogo com contador de pontuação, erros, e notas visíveis.
+Tela final exibindo pontuação total e opções de reiniciar ou voltar ao menu.
+Modo Single-Player:
+Geração aleatória de notas.
+Movimentação das notas na tela.
+Detecção de acertos e erros.
+Sistema de pontuação e limite de erros.
+Aceleração das notas conforme maior tempo de jogo.
+Modo Multiplayer:
+Comunicação entre servidor e clientes usando Socket.io, Ngrok.
+Sincronização de notas e pontuação entre jogadores.
+Lógica para iniciar a partida quando ambos estiverem prontos.
+Ajuste da Dificuldade:
+Aumento gradual da velocidade das notas e redução do intervalo.
+Teste para garantir que a progressão de dificuldade é equilibrada.
+
+4. Testes
+Testes Funcionais:
+Verificar se as notas aparecem corretamente e na linha correta.
+Garantir que a lógica de acerto e erro funciona.
+Testar o multiplayer para sincronização de notas e pontuação.
+Verificar se o campo de acerto está correto.
+Testes de UI/UX:
+Certificar-se de que as telas estão claras e funcionais.
+Testes de Limite:
+Verificar comportamento ao atingir o limite de erros.
+Garantir que o jogo termina corretamente.
+
+5. Documentação
+Documentar o Código:
+Inserir comentários explicando as principais funções e lógicas implementadas.
+Criar uma seção de "como usar" para futuras modificações no código.
+Registrar o Processo de Desenvolvimento:
+Criar um documento descrevendo cada etapa do desenvolvimento.
+Guia para Jogadores:
+Criar um manual simples explicando como jogar (teclas, objetivos, modos de jogo).
+
+
+
 Nomes                                   RGM
 Alexandre Teles Barbosa                 30296781
 Isake Assis Abreu Molina                30260671
